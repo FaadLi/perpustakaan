@@ -7,7 +7,11 @@
 
 		<script type="text/javascript">
 		$(document).ready(function(){
-			$('#myTable').DataTable();
+			$('#myTable').DataTable({
+				order:[[0,"desc"]] //sort desc dataTabel baris 0 (No) 
+			});
+
+
 			$('.button-collapse').sideNav();
 			$('.dropdown-button').dropdown();
 		});

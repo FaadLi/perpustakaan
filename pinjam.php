@@ -22,7 +22,7 @@
   <?php  
     require_once "db/koneksi.php";
 
-    $query = mysqli_query($dbConn, "SELECT pinjam.id_pinjam, anggota.nama, anggota.kelas, anggota.jurusan, pinjam.tgl_pinjam, pinjam.tgl_kembali, pinjam.status, pinjam.jumlah FROM pinjam JOIN anggota ON anggota.id_anggota=pinjam.id_anggota WHERE pinjam.status = 'belum'") or die(mysqli_error());
+    $query = mysqli_query($dbConn, "SELECT pinjam.id_pinjam, anggota.nama, anggota.kelas, anggota.jurusan, pinjam.tgl_pinjam, pinjam.tgl_kembali, pinjam.status, pinjam.jumlah FROM pinjam JOIN anggota ON anggota.id_anggota=pinjam.id_anggota WHERE pinjam.status = 'belum' ORDER By pinjam.id_pinjam DESC") or die(mysqli_error());
     
     ?>
   <hr>  
