@@ -12,6 +12,6 @@ tambah password tabel anggota
 
 delete buku
 
-tambah jumlah buku saat kembali
+<!-- tambah jumlah buku saat kembali -->
 
 print kertu pinjam buku

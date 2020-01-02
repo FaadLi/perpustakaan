@@ -10,6 +10,8 @@
 	$sql = "INSERT INTO pinjam VALUES('', '$id_anggota','$id_buku', '$jumlah', CURDATE(), CURDATE()+INTERVAL 7 DAY, 'belum')";
 	$query =  mysqli_query($dbConn, $sql) or die(mysqli_error($dbConn));
 
+	$sql2 = mysqli_query($dbConn, " UPDATE `buku` SET `stok_buku`=stok_buku-1 WHERE id_buku = '$id_buku' ");
+
 	$sql = "SELECT SUM(id_pinjam) as id_pinjam FROM pinjam";
 	$query =  mysqli_query($dbConn, $sql) or die(mysqli_error());	
 	// $data = mysqli_fetch_assoc($query);

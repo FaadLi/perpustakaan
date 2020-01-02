@@ -27,7 +27,7 @@ while ($dat = mysqli_fetch_array($q2)) {
 	$query = mysqli_query($dbConn, "INSERT INTO `kembali`(`id_kembali`, `id_pinjam`, `nama_buku`, `nama_pinjam`, `tgl_pinjam`, `tgl_kembali`, `denda`) VALUES ('','$id_pinjam','$nama_buku','$nama','$tgl_pinjam','$tgl_kembali','$denda' )") or die(mysql_error());
 	
 	$sql = mysqli_query($dbConn, " UPDATE `pinjam` SET `status`='sudah' WHERE id_pinjam = '$id_pinjam' ");
-	$sql2 = mysqli_query($dbConn, " UPDATE `buku` SET `stok_buku`=stok_buku-1 WHERE id_buku = '$idbk' ");
+	$sql2 = mysqli_query($dbConn, " UPDATE `buku` SET `stok_buku`=stok_buku+1 WHERE id_buku = '$idbk' ");
 }
 	header('location:kembali.php');
 ?>
