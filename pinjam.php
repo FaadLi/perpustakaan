@@ -19,6 +19,9 @@
  <div class="row">
   <div class="col m8 offset-m3">
   <h5>Buku yang sedang di Pinjam</h5>
+
+  
+
   <?php  
     require_once "db/koneksi.php";
 
@@ -51,14 +54,42 @@
             <td><?php   echo $data['tgl_kembali']; ?></td>
             <td><?php   echo $data['nama']; ?></td>
             <td>
-              <a href="kembali_buku.php?id_pinjam=<?php echo $data['id_pinjam']; ?>" class="btn">Kembalikan</a>
+              <a href="#" id="myBtn" class="btn">Kembalikan</a>
             </td>
           </tr>
+                    <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <h2> <?php   echo $data['nama'] ?></h2>
+            </div>
+            <div class="modal-body">
+              
+              <p> Tanggal Pinjam : <?php   echo $data['tgl_pinjam'] ?></p>
+              <p> Tanggal Kembali : <?php   echo $data['tgl_kembali'] ?></p>
+
+              <a href="kembali_buku.php?id_pinjam=<?php echo $data['id_pinjam']; ?>" class="btn">Kembalikan</a>
+            </div>
+            <div class="modal-footer">
+              <h3>Modal Footer</h3>
+            </div>
+          </div>
+          </div>
+
          <?php } ?>
       </tbody>
     </table>
   </div>
  </div>
+
+
+
+
+
+
 
 <?php include 'templates/footer.php' ?>
 <?php }

@@ -7,7 +7,7 @@
 	$jumlah = $_POST['jumlah'];
 	$id_buku = $_POST['id_buku'];
 
-	$sql = "INSERT INTO pinjam VALUES('', '$id_anggota','$id_buku', '$jumlah', CURDATE(), CURDATE()+INTERVAL 3 DAY, 'belum')";
+	$sql = "INSERT INTO pinjam VALUES('', '$id_anggota','$id_buku', '$jumlah', CURDATE(), CURDATE()+INTERVAL 7 DAY, 'belum')";
 	$query =  mysqli_query($dbConn, $sql) or die(mysqli_error($dbConn));
 
 	$sql = "SELECT SUM(id_pinjam) as id_pinjam FROM pinjam";

@@ -39,7 +39,7 @@
      <label for="">Tgl Kembali</label>
        <div class="input-field">
           <input type="text" name="" disabled value="<?php
-            $tgl_kembali = date('d F Y', strtotime('+3 day'));
+            $tgl_kembali = date('d F Y', strtotime('+7 day'));
            echo $tgl_kembali; ?>">
           <input type="hidden" name="tgl_kembali" value="<?php echo $tgl_kembali; ?>">
        </div>

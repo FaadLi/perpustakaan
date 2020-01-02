@@ -6,7 +6,7 @@ $hapus = mysqli_query($dbConn, "DELETE FROM 'buku' WHERE 'buku'.'id_buku'=$id_bu
 
 if ($hapus) {
 	header("location:buku.php");
-	alert("Berhasil Menghapus Buku");
+	
 }else{
 	echo "gagal menghapus";
 }
