@@ -25,6 +25,8 @@
 			var tgl_pinjam	= $(this).data('tgl_pinjam');
 			var tgl_kembali	= $(this).data('tgl_kembali');
 
+			var ida 	= $(this).data('ida');
+			// console.log(ida);
 
 			var dendanya = 1000;
 			var totalTgl = 2;

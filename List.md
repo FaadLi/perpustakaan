@@ -14,4 +14,4 @@ delete buku
 
 <!-- tambah jumlah buku saat kembali -->
 
-print kertu pinjam buku
+<!-- print kertu pinjam buku -->

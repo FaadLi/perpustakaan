@@ -25,7 +25,7 @@
   <?php  
     require_once "db/koneksi.php";
 
-    $query = mysqli_query($dbConn, "SELECT pinjam.id_pinjam, buku.nama_buku, anggota.nama, anggota.nisn, anggota.kelas, anggota.jurusan, pinjam.tgl_pinjam, pinjam.tgl_kembali, pinjam.status, pinjam.jumlah FROM pinjam JOIN anggota ON anggota.id_anggota=pinjam.id_anggota JOIN buku ON buku.id_buku=pinjam.id_buku WHERE pinjam.status = 'belum' ORDER By pinjam.id_pinjam DESC") or die(mysqli_error());
+    $query = mysqli_query($dbConn, "SELECT pinjam.id_pinjam, buku.nama_buku, anggota.id_anggota, anggota.nama, anggota.nisn, anggota.kelas, anggota.jurusan, pinjam.tgl_pinjam, pinjam.tgl_kembali, pinjam.status, pinjam.jumlah FROM pinjam JOIN anggota ON anggota.id_anggota=pinjam.id_anggota JOIN buku ON buku.id_buku=pinjam.id_buku WHERE pinjam.status = 'belum' ORDER By pinjam.id_pinjam DESC") or die(mysqli_error());
     
     ?>
   <hr>  
@@ -56,13 +56,17 @@
             
             <td>
               <a href="#" id="myBtn" class="btn myBtn" 
+              data-ida="<?php echo $data['id_anggota'] ?>"
               data-id="<?php echo $data['id_pinjam'] ?>"
               data-nama="<?php echo $data['nama'] ?>"
               data-buku="<?php echo $data['nama_buku'] ?>"
               data-tgl_pinjam="<?php echo $data['tgl_pinjam'] ?>"
               data-tgl_kembali="<?php echo $data['tgl_kembali'] ?>"
-              
               >Kembalikan</a>
+              
+              <a class="btn" href="print/print.php?id_anggota=<?php echo $data['id_anggota'] ?>" target="_blank"
+              >Print</a>
+
             </td>
           </tr>
           
