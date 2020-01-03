@@ -25,7 +25,7 @@
   <?php  
     require_once "db/koneksi.php";
 
-    $query = mysqli_query($dbConn, "SELECT pinjam.id_pinjam, anggota.nama, anggota.kelas, anggota.jurusan, pinjam.tgl_pinjam, pinjam.tgl_kembali, pinjam.status, pinjam.jumlah FROM pinjam JOIN anggota ON anggota.id_anggota=pinjam.id_anggota WHERE pinjam.status = 'belum' ORDER By pinjam.id_pinjam DESC") or die(mysqli_error());
+    $query = mysqli_query($dbConn, "SELECT pinjam.id_pinjam, buku.nama_buku, anggota.nama, anggota.nisn, anggota.kelas, anggota.jurusan, pinjam.tgl_pinjam, pinjam.tgl_kembali, pinjam.status, pinjam.jumlah FROM pinjam JOIN anggota ON anggota.id_anggota=pinjam.id_anggota JOIN buku ON buku.id_buku=pinjam.id_buku WHERE pinjam.status = 'belum' ORDER By pinjam.id_pinjam DESC") or die(mysqli_error());
     
     ?>
   <hr>  
@@ -36,53 +36,66 @@
       <thead>
         <tr>
           <th>No</th>
-          <th>Tgl Pinjam</th>
+          <th>Nisn</th>
+          <th>Nama Peminjam</th>
           <th>Jumlah Pinjam</th>
           <th>Tgl Kembali</th>
-          <th>Nama Peminjam</th>
           <th>Opsi</th>
         </tr>
       </thead>
     
-      <tbody>
+      <tbody id="show_modal">
         <?php  while($data = mysqli_fetch_array($query)) {
          ?>
           <tr>
             <td><?php   echo $data['id_pinjam'] ?></td>
-            <td><?php   echo $data['tgl_pinjam']; ?></td>
-            <td><?php   echo $data['jumlah']; ?></td>
-            <td><?php   echo $data['tgl_kembali']; ?></td>
+            <td><?php   echo $data['nisn']; ?></td>
             <td><?php   echo $data['nama']; ?></td>
+            <td><?php   echo $data['tgl_pinjam']; ?></td>
+            <td><?php   echo $data['tgl_kembali']; ?></td>
+            
             <td>
-              <a href="#" id="myBtn" class="btn">Kembalikan</a>
+              <a href="#" id="myBtn" class="btn myBtn" 
+              data-id="<?php echo $data['id_pinjam'] ?>"
+              data-nama="<?php echo $data['nama'] ?>"
+              data-buku="<?php echo $data['nama_buku'] ?>"
+              data-tgl_pinjam="<?php echo $data['tgl_pinjam'] ?>"
+              data-tgl_kembali="<?php echo $data['tgl_kembali'] ?>"
+              
+              >Kembalikan</a>
             </td>
           </tr>
-                    <!-- The Modal -->
-          <div id="myModal" class="modal">
-
-          <!-- Modal content -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <span class="close">&times;</span>
-              <h2> <?php   echo $data['nama'] ?></h2>
-            </div>
-            <div class="modal-body">
-              
-              <p> Tanggal Pinjam : <?php   echo $data['tgl_pinjam'] ?></p>
-              <p> Tanggal Kembali : <?php   echo $data['tgl_kembali'] ?></p>
-
-              <a href="kembali_buku.php?id_pinjam=<?php echo $data['id_pinjam']; ?>" class="btn">Kembalikan</a>
-            </div>
-            <div class="modal-footer">
-              <h3>Modal Footer</h3>
-            </div>
-          </div>
-          </div>
+          
 
          <?php } ?>
       </tbody>
     </table>
   </div>
+    <!-- Start Modal -->
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h3 id="nama"> Modal</h3>
+    </div>
+  <div class="modal-body">
+      <h4 id="buku">Nama Buku</h4>
+      <p id="tgl_pinjam">Tanggal Pinjam : </p>
+      <p id="tgl_kembali">Tanggal Kemali : </p>
+      <p id="tgl">tanggal sekarang</p>
+      <p id="denda">Denda : </p>
+
+      <a id="kembali" href="#" class="btn">Kembalikan</a>
+      
+  </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+  </div>
+  <!-- END MODAL -->
  </div>
 
 
