@@ -45,7 +45,7 @@
             <td><?php   echo $data['kelas'] . ' ' . $data['jurusan']; ?></td>
             <td><?php   echo $data['jen_kel']; ?></td>
             <td>
-              <a href="tambah_pinjam_select.php?id_pinjam=<?php echo $data['id_anggota']; ?>">Jadikan Peminjam</a>
+              <a href="transaksi.php?id_pinjam=<?php echo $data['id_anggota']; ?>">Jadikan Peminjam</a>
             </td>
           </tr>
          <?php } ?>

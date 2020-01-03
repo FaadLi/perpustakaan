@@ -57,7 +57,8 @@
           <tbody>
            <?php 
             require 'db/koneksi.php';
-            $jum = $_POST['jumlah_pinjam'];
+            // $jum = $_POST['jumlah_pinjam'];
+            $jum = 1;
               echo "<input type='hidden' name='jumlah' value='";
               echo $jum;
               echo "' />";
