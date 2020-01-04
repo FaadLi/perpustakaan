@@ -6,7 +6,7 @@ http://localhost/perpustakaan/pinjam.php -->
 
 <!-- user level -->
 
-Halaman Member
+<!-- Halaman Member -->
 
 <!-- tambah password tabel anggota -->
 
