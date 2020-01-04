@@ -14,7 +14,7 @@ $id_pinjam = $_GET['id_pinjam'];
 // // var_dump($rr);
 // die();
 
-$q2 = mysqli_query($dbConn, "SELECT pinjam.*, anggota.nama FROM `pinjam`inner join buku on pinjam.id_buku = buku.id_buku inner join anggota on pinjam.id_anggota = anggota.id_anggota WHERE pinjam.id_pinjam ='$id_pinjam'");
+$q2 = mysqli_query($dbConn, "SELECT pinjam.*, anggota.nama, buku.nama_buku FROM `pinjam`inner join buku on pinjam.id_buku = buku.id_buku inner join anggota on pinjam.id_anggota = anggota.id_anggota WHERE pinjam.id_pinjam ='$id_pinjam'");
 
 while ($dat = mysqli_fetch_array($q2)) {
 	$idbk = $dat['id_buku'];
