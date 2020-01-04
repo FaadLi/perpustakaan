@@ -1,26 +1,42 @@
 	<?php 
 		include "db/koneksi.php";
 		session_start();
-		if (isset($_SESSlON['admin'])) {
-			header("location:index.php");
-		}
-		else{
+		// $i = 1;
+		// if ($i == 1){
+		// 	echo "coba";
+		// 
+		
+		if (isset($_SESSION['admin']) OR isset($_SESSION['anggota']) ) {
+			echo "masuk";
+			
+			if (isset($_SESSION['admin']) ) {
+				header("location:index.php");
+			}
+			else {
+				header("location:member/index.php");
+			}
+		}else{
 			$error = "";
 			if(isset($_POST['submit'])){
 				$username = $_POST['username'];
 				$password = $_POST['password'];
 				$cek = mysqli_query($dbConn, "SELECT * FROM petugas WHERE nama = '$username' AND password = '$password' ") or die(mysqli_error());
+				$cek2 = mysqli_query($dbConn, "SELECT * FROM anggota WHERE nisn = '$username' AND password = '$password' ") or die(mysqli_error());
 				if (mysqli_num_rows($cek) == 1) {
 					$data = mysqli_fetch_array($cek);
 					echo $_SESSION['admin'] = $data['1'];
 					header("location:index.php");
+				}else if (mysqli_num_rows($cek2) == 1 ){
+					$data = mysqli_fetch_array($cek2);
+					echo $_SESSION['anggota'] = $data['1'];
+					header("location:member/index.php");
 				}else{
-					$error = "login gagal";
+					$error = "Username atau Password Salah";
 				}
-			}
-	?>
+			}?>
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-		<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css">
+	
 	<div class="row">
 		<div class="col m6 offset-m3">
 			<h3 class="center-align">Login <span class="orange-text">Area</span></h3>
@@ -44,6 +60,6 @@
 			</div>
 		</div>
 	</div>
+	
 	<?php include "templates/footer.php"; ?>
-	<?php }
-	 ?>
+	<?php } ?>

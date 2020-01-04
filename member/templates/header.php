@@ -20,7 +20,7 @@
 			<!-- Dropdown Structure -->
 			<ul id="dropdown1" class="dropdown-content" style="margin-top: 50px">
 				<li><a href="#">Profil</a></li>
-				<li><a href="logout.php">Logout</a></li>
+				<li><a href="../logout.php">Logout</a></li>
 			</ul>
 			<nav>
 				<div class="nav-wrapper">
@@ -32,7 +32,7 @@
 					<!-- navbar for mobile -->
 					<ul class="side-nav" id="mobile-demo">
 						<li><a href="#">Profil</a></li>
-						<li><a href="logout.php">logout</a></li>
+						<li><a href="../logout.php">logout</a></li>
 					</ul>
 				</div>
 			</nav>
