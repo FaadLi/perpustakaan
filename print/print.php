@@ -21,7 +21,7 @@
     
         <table border="1" style="width: 100%">
             <tr>
-                <th>No</th>
+                <th>Kode</th>
                 <th>Nama Buku</th>
                 <th>Kategori</th>
                 <th>Tempat Rak Buku</th>
@@ -29,7 +29,7 @@
             </tr>
             <?php 
             $idnya = $_GET['id_anggota'];
-            $no = 1;
+            
             $sql = mysqli_query($dbConn,"SELECT * FROM pinjam 
             JOIN anggota ON anggota.id_anggota=pinjam.id_anggota 
             JOIN buku ON buku.id_buku=pinjam.id_buku
@@ -48,18 +48,18 @@
                 
             <h4>Peminjam = <?php echo $data2['nama']; ?> / <?php  echo  $data2['nisn']; ?></h4>
             <!-- <h4>Nama = <?php  ?></h4> -->
-            <h5>Tanggal Pinjam  = <?php echo $data2['tgl_pinjam']; ?></h5>
-            <h5>Tanggal Kembali = <?php echo $data2['tgl_kembali']; ?></h5>
+            <h5>Tanggal Pinjam  = <?php echo date("d F Y", strtotime($data2['tgl_pinjam'])); ?></h5>
+            <h5>Tanggal Kembali = <?php echo date("d F Y", strtotime($data2['tgl_kembali'])); ?></h5>
             
             <?php
             while($data = mysqli_fetch_array($sql2)){
             ?>
             <tr>
-                <td><?php echo $no++; ?></td>
+                <td><?php echo $data['id_pinjam']; ?></td>
                 <td><?php echo $data['nama_buku']; ?></td>
                 <td><?php echo $data['nama_kategori']; ?></td>
                 <td><?php echo $data['tempat']; ?></td>
-                <td><?php echo $data['tgl_pinjam']; ?></td>
+                <td><?php echo date("d F Y", strtotime($data['tgl_pinjam'])); ?></td>
             </tr>
             <?php 
             }

@@ -29,12 +29,11 @@
     <table id="myTable" class="mdl-data-table" width="100%" cellpadding="0">
       <thead>
         <tr>
-          <th>No</th>
-          <th>Tgl Pinjam</th>
-          <th>Jumlah Pinjam</th>
-          <th>Tgl Kembali</th>
+          <th>Kode</th>
           <th>Nama Peminjam</th>
           <th>Buku</th>
+          <th>Tgl Pinjam</th>
+          <th>Tgl Kembali</th>
           <th>Opsi</th>
         </tr>
       </thead>
@@ -44,11 +43,10 @@
          ?>
           <tr>
             <td><?php   echo $data['id_pinjam'] ?></td>
-            <td><?php   echo $data['tgl_pinjam']; ?></td>
-            <td><?php   echo $data['jumlah']; ?></td>
-            <td><?php   echo $data['tgl_kembali']; ?></td>
             <td><?php   echo $data['nama_pinjam']; ?></td>
             <td><?php   echo $data['nama_buku']; ?></td>
+            <td><?php   echo date("d F Y", strtotime($data['tgl_pinjam'])); ?></td>
+            <td><?php   echo date("d F Y", strtotime($data['tgl_kembali'])); ?></td>
             <td>
             <a href="hapus_kembali.php?id_kembali=<?php echo $data['id_kembali']; ?>" class="btn btn-floating"><i class="fa fa-trash"></i></a>
             </td>

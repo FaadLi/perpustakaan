@@ -20,10 +20,9 @@
   <div class="col m8 offset-m3">
   <h5>Input Data Pinjam</h5>
   <hr> 
-    <table id="myTable" class="mdl-data-table" width="100%" cellpadding="0">
+    <table id="tbl_peminjam" class="mdl-data-table" width="100%" cellpadding="0">
       <thead>
         <tr>
-          <th>No</th>
           <th>Nisn</th>
           <th>Nama</th>
           <th>Kelas</th>
@@ -39,13 +38,12 @@
           while ($data = mysqli_fetch_array($query)) {
          ?>
           <tr>
-            <td><?php   echo $no++; ?></td>
             <td><?php   echo $data['nisn']; ?></td>
             <td><?php   echo $data['nama']; ?></td>
             <td><?php   echo $data['kelas'] . ' ' . $data['jurusan']; ?></td>
             <td><?php   echo $data['jen_kel']; ?></td>
             <td>
-              <a href="transaksi.php?id_pinjam=<?php echo $data['id_anggota']; ?>">Jadikan Peminjam</a>
+              <a class="btn" href="transaksi.php?id_pinjam=<?php echo $data['id_anggota']; ?>">Pilih</a>
             </td>
           </tr>
          <?php } ?>
