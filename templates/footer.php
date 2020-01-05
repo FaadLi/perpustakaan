@@ -5,10 +5,18 @@
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 		<script type="text/javascript" src="js/dataTable.min.js"></script>
 
+		<!-- <script src="http://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script> -->
+
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$('#myTable').DataTable({
 				order:[[0,"desc"]] //sort desc dataTabel baris 0 (No) 
+				
+			});
+			// http://localhost/perpustakaan/tambah_pinjam.php
+			$('#tbl_peminjam').DataTable({
+				order:[[3,"asc"]] //sort desc dataTabel baris 0 (No) 
+				
 			});
 
 
@@ -24,26 +32,44 @@
 			var buku		= $(this).data('buku');
 			var tgl_pinjam	= $(this).data('tgl_pinjam');
 			var tgl_kembali	= $(this).data('tgl_kembali');
+			
+			var akhir 		= $(this).data('kembali');
+			var miliday = 24 * 60 * 60 * 1000;  // varibel miliday sebagai pembagi untuk menghasilkan hari
+			var d1 = new Date();				// mendapatkan tgl hari ini
+			var d2 = new Date(akhir);			// memasukkan tgl_kembali dalam variabel d2 
+
+			var tgl1 = Date.parse(d1);			// Date.parse akan menghasilkan nilai bernilai integer dalam bentuk milisecond
+			var tgl2 = Date.parse(d2);
+
+			var hasil2 = (tgl1 - tgl2) / miliday;// Menjumlahkan 
+			// var coba = hasil + 1;
+			var hasil = parseInt(hasil2);		// Convert ke Integer
+			console.log(d2);
+			console.log(d1);
+
+			console.log(hasil);
 
 			var ida 	= $(this).data('ida');
-			// console.log(ida);
+			console.log(ida);	
 
-			var dendanya = 1000;
-			var totalTgl = 2;
+			var dendanya = 500;		//membuat denda yang dikeluarkan jika melewati hari yang sudah ditentukan
+			var totalTgl = hasil;
 			var denda = 0;
-			if(totalTgl > 7){
+			if(totalTgl > 0){
 				console.log("denda");
-				var total= totalTgl - 7;
-				var denda = total * dendanya;
+				denda = totalTgl * dendanya;
+				denda = "denda <b>"+denda+"</b> karena telat bayar selama <b>"+totalTgl+"</b> Hari";
+				console.log(denda);
 			}else{
 				console.log("tidak denda");
+				denda = "-";
 				
 			}
 
 			// console.log(id+" "+nama+" "+buku+" "+tgl_pinjam+" "+tgl_kembali);
 			modal.style.display = "block";
-			document.getElementById("nama").innerHTML="Sdr,"+nama;
-			document.getElementById("buku").innerHTML="Buku "+buku;
+			document.getElementById("nama").innerHTML="Sdr, "+nama;
+			document.getElementById("buku").innerHTML="Buku "+buku; 
 			document.getElementById("tgl_pinjam").innerHTML="Tanggal Pinjam Buku = " +tgl_pinjam;
 			document.getElementById("tgl_kembali").innerHTML="Tanggal Kembali Buku = " +tgl_kembali;
 

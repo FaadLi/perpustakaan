@@ -35,10 +35,10 @@
     <table id="myTable" class="mdl-data-table" width="100%" cellpadding="0">
       <thead>
         <tr>
-          <th>No</th>
+          <th>Kode</th>
           <th>Nisn</th>
           <th>Nama Peminjam</th>
-          <th>Jumlah Pinjam</th>
+          <th>Tgl Pinjam</th>
           <th>Tgl Kembali</th>
           <th>Opsi</th>
         </tr>
@@ -51,8 +51,8 @@
             <td><?php   echo $data['id_pinjam'] ?></td>
             <td><?php   echo $data['nisn']; ?></td>
             <td><?php   echo $data['nama']; ?></td>
-            <td><?php   echo $data['tgl_pinjam']; ?></td>
-            <td><?php   echo $data['tgl_kembali']; ?></td>
+            <td><?php   echo date("d F Y", strtotime($data['tgl_pinjam'])); ?></td>
+            <td><?php   echo date("d F Y", strtotime($data['tgl_kembali'])); ?></td>
             
             <td>
               <a href="#" id="myBtn" class="btn myBtn" 
@@ -60,8 +60,9 @@
               data-id="<?php echo $data['id_pinjam'] ?>"
               data-nama="<?php echo $data['nama'] ?>"
               data-buku="<?php echo $data['nama_buku'] ?>"
-              data-tgl_pinjam="<?php echo $data['tgl_pinjam'] ?>"
-              data-tgl_kembali="<?php echo $data['tgl_kembali'] ?>"
+              data-tgl_pinjam="<?php echo date("d F Y", strtotime($data['tgl_pinjam'])) ?>"
+              data-tgl_kembali="<?php echo date("d F Y", strtotime($data['tgl_kembali'])) ?>"
+              data-kembali ="<?php echo $data['tgl_kembali'] ?>"
               >Kembalikan</a>
               
               <a class="btn" href="print/print.php?id_anggota=<?php echo $data['id_anggota'] ?>" target="_blank"
