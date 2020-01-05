@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2020 at 12:42 PM
+-- Generation Time: Jan 05, 2020 at 06:58 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -51,12 +51,7 @@ INSERT INTO `anggota` (`id_anggota`, `nisn`, `nama`, `password`, `kelas`, `jurus
 (7, '9998234616', 'Arshanti', '9998234616', 'X', 'Akomodasi Perhotelan', 'perempuan', '08456344632'),
 (8, '9998882823', 'Aimul Yakin', '9998882823', 'XII', 'Jasa Boga', 'laki-laki', '085646072861'),
 (9, '9992823781', 'Mahfiroh', '9992823781', 'XII', 'Rekayasa Perangkat Lunak', 'perempuan', '082139555736'),
-(10, '9998324532', 'Nuramdan', '9998324532', 'XII', 'Multimedia', 'laki-laki', '085646828829'),
-(12, '17515060111019', 'Nurul', '17515060111019', 'XI', 'Teknik Komputer Dan Jaringan', 'perempuan', '085753838556'),
-(13, '986342', 'Aku', '986342', 'XII', 'Teknik Komputer Dan Jaringan', 'laki-laki', '082142788992'),
-(14, '123', 'NINDI', '123', 'XII', 'Multimedia', 'perempuan', '0879887563879'),
-(15, '111', 'Ini Nama Saya', '111', 'XII', 'Teknik Komputer Dan Jaringan', 'laki-laki', '085794535'),
-(16, '0000000', 'namanyaCoba', '0000000', 'XII', 'Akomodasi Perhotelan', 'perempuan', '923741231972');
+(10, '9998324532', 'Nuramdan', '9998324532', 'XII', 'Multimedia', 'laki-laki', '085646828829');
 
 -- --------------------------------------------------------
 
@@ -78,23 +73,9 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`id_buku`, `nama_buku`, `penerbit`, `id_kategori`, `id_rak`, `stok_buku`) VALUES
-(6, 'Sejarah Indonesia', 'Zahra', 3, 5, 677),
-(8, '101,5 Kecerdasan Emosional Anak Muda', ' Raih Asa Sukses', 1, 3, 78),
-(9, '16 Modul Latihan Pemulihan Kecanduan Narkoba Berba', 'BP', 2, 5, 65),
-(10, ' Aku Jago Menggambar Alat Transportasi + Bangunan', 'Cerdas Interaktif', 4, 4, 46),
-(11, 'Arti Pendidikan Terpadu Bagi Saya', 'Pustaka Baru', 1, 1, 67),
-(12, 'Algoritma', 'Asa dinanta', 5, 6, 33),
-(14, 'Pendidikan Kewarganegaraan', 'Gramedia', 1, 3, 54),
-(15, 'Sejarah pulau kapuk', 'kartika', 3, 5, 56),
-(16, 'Legenda Banyuwangi', 'sutijo', 4, 2, 65),
-(18, 'apa yang terjadi ?', 'kamina', 3, 5, 68),
-(19, 'Putri Duyung', 'zahra', 4, 5, 59),
-(20, 'Kun Anta', 'ana', 4, 4, 32),
-(21, 'Cinderella', 'fatin', 4, 2, 87),
-(22, 'wawasan Nusantara', 'nyah', 1, 6, 76),
-(24, 'Basis Data', 'Arfitkoo', 2, 4, 4),
-(25, 'AKU', 'langga', 2, 1, 15),
-(27, 'tes ya', 'asd', 1, 5, 86);
+(1, 'Habiburrahman El Shirazy Bumi Cinta', 'Author Publishing, 2010', 4, 1, 9),
+(2, 'Ayat?Ayat Cinta 2004', 'Republika; Pesantren Basmala Indonesia', 4, 1, 2),
+(3, 'Ghost In The Wires: My Adventures as the World\'s M', ' Kevin Mitnick and William L. Simon', 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -134,17 +115,6 @@ CREATE TABLE `kembali` (
   `denda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `kembali`
---
-
-INSERT INTO `kembali` (`id_kembali`, `id_pinjam`, `nama_buku`, `nama_pinjam`, `tgl_pinjam`, `tgl_kembali`, `denda`) VALUES
-(1, 5, 'Algoritma', 'Nurul', '2017-01-30', '2017-01-31', 0),
-(5, 2, '16 Modul Latihan Pemulihan Kecanduan Narkoba Berba', 'Ifa Sulviana', '2017-01-30', '2017-01-31', 0),
-(17, 22, 'tes ya', 'namanyaCoba', '2020-01-04', '0000-00-00', 0),
-(18, 20, 'tes ya', 'Ini Nama Saya', '2020-01-04', '0000-00-00', 0),
-(19, 24, 'Sejarah Indonesia', 'Rofik', '2020-01-05', '0000-00-00', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -181,35 +151,6 @@ CREATE TABLE `pinjam` (
   `tgl_kembali` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pinjam`
---
-
-INSERT INTO `pinjam` (`id_pinjam`, `id_anggota`, `id_buku`, `jumlah`, `tgl_pinjam`, `tgl_kembali`, `status`) VALUES
-(1, 1, 6, 1, '2017-01-30', '2017-01-30 17:00:00', 'sudah'),
-(2, 1, 9, 1, '2017-01-30', '2017-01-30 17:00:00', 'sudah'),
-(5, 3, 12, 1, '2017-01-30', '2017-01-30 17:00:00', 'sudah'),
-(6, 2, 8, 1, '2017-01-30', '2017-01-30 17:00:00', 'sudah'),
-(7, 8, 18, 1, '2017-01-30', '2017-01-31 17:00:00', 'sudah'),
-(8, 10, 6, 2, '2020-01-02', '2020-01-04 17:00:00', 'sudah'),
-(9, 14, 12, 1, '2020-01-02', '2020-01-04 17:00:00', 'sudah'),
-(10, 14, 6, 1, '2020-01-02', '2020-01-03 02:41:27', 'sudah'),
-(11, 14, 6, 1, '2020-01-02', '2020-01-04 17:00:00', 'sudah'),
-(12, 13, 10, 1, '2020-01-02', '2020-01-08 17:00:00', 'sudah'),
-(13, 14, 18, 2, '2020-01-02', '2020-01-08 17:00:00', 'sudah'),
-(14, 14, 6, 1, '2020-01-02', '2020-01-08 17:00:00', 'sudah'),
-(15, 1, 27, 1, '2020-01-03', '2020-01-09 17:00:00', 'sudah'),
-(16, 7, 27, 1, '2020-01-03', '2020-01-09 17:00:00', 'sudah'),
-(17, 14, 10, 1, '2020-01-03', '2020-01-04 10:15:34', 'sudah'),
-(18, 2, 15, 1, '2020-01-03', '2020-01-04 10:28:36', 'sudah'),
-(19, 16, 27, 1, '2020-01-04', '2020-01-10 17:00:00', 'belum'),
-(20, 15, 27, 1, '2020-01-04', '2020-01-04 12:34:01', 'sudah'),
-(21, 14, 27, 1, '2020-01-04', '2020-01-10 17:00:00', 'belum'),
-(22, 16, 27, 1, '2020-01-04', '2020-01-04 12:07:13', 'sudah'),
-(23, 16, 27, 1, '2020-01-04', '2020-01-10 17:00:00', 'belum'),
-(24, 3, 6, 1, '2020-01-05', '2020-01-05 09:51:52', 'sudah'),
-(25, 8, 24, 1, '2020-01-05', '2020-01-02 17:00:00', 'belum');
 
 -- --------------------------------------------------------
 
@@ -293,13 +234,13 @@ ALTER TABLE `rak_buku`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -311,7 +252,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `kembali`
 --
 ALTER TABLE `kembali`
-  MODIFY `id_kembali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_kembali` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `petugas`
@@ -323,7 +264,7 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `pinjam`
 --
 ALTER TABLE `pinjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rak_buku`
@@ -336,29 +277,10 @@ ALTER TABLE `rak_buku`
 --
 
 --
--- Constraints for table `kategori`
---
-ALTER TABLE `kategori`
-  ADD CONSTRAINT `kategori_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `buku` (`id_kategori`);
-
---
 -- Constraints for table `kembali`
 --
 ALTER TABLE `kembali`
   ADD CONSTRAINT `kembali_ibfk_1` FOREIGN KEY (`id_pinjam`) REFERENCES `pinjam` (`id_pinjam`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `pinjam`
---
-ALTER TABLE `pinjam`
-  ADD CONSTRAINT `pinjam_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id_buku`),
-  ADD CONSTRAINT `pinjam_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id_anggota`);
-
---
--- Constraints for table `rak_buku`
---
-ALTER TABLE `rak_buku`
-  ADD CONSTRAINT `rak_buku_ibfk_1` FOREIGN KEY (`id_rak`) REFERENCES `buku` (`id_rak`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
